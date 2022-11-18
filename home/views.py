@@ -8,3 +8,5 @@ def index(request):
 def new(request):
     context = {}
     return render(request, 'new.html', context)
+
+    

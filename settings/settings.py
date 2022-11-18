@@ -30,6 +30,7 @@ INSTALLED_APPS = [
 
     # team 09
     'home',
+    'search',
 ]
 
 MIDDLEWARE = [
