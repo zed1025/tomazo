@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_title %}New{% endblock %}
+
+{% block extra_head %}
+<style>
+    .nav-li-1{
+        list-style-type: none;
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    {% include 'navbar.html' %}
+    New Page
+</div>
+
+{% endblock %}
