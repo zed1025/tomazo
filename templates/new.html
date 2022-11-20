@@ -14,7 +14,35 @@
 {% block content %}
 <div class="container">
     {% include 'navbar.html' %}
-    New Page
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Image</th>
+                <th scope="col">Description</th>
+                <th scope="col">Restaurant</th>
+                <th scope="col">Price</th>
+                <th scope="col">Available</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in all_foods %}
+            <tr>
+                <td>{{item.name}}</th>
+                <td><img src={{item.image_link}} class="img-fluid img-thumbnail" alt={{item.name}}></td>
+                <td>{{item.description}}</td>
+                <td>{{item.restaurant_id.name}}</td>
+                <td>{{item.price}}</td>
+                {% if item.available %}
+                <td>Yes</td>
+                {% else %}
+                <td>No</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </div>
 
 {% endblock %}

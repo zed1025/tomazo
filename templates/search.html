@@ -14,16 +14,68 @@
 {% block content %}
 <div class="container">
     {% include 'navbar.html' %}
-    {% if search_res.count == 0 %}
+    <br>
+    {% if sr == '' %}
         <p>Sorry! No relevant search results.</p>
-    {% endif %}
+    {% else %}
+    Search Results for: {{sr}} <hr>
 
-    {% for item in search_res %}
-        <p>{{item}}</p><hr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Image</th>
+                <th scope="col">Description</th>
+                <th scope="col">Restaurant</th>
+                <th scope="col">Price</th>
+                <th scope="col">Available</th>
+            </tr>
+        </thead>
+        <tbody>
+
+    <h2>Matching Dishes</h2>
+    {% for item in food_items %}
+            <tr>
+                <td>{{item.name}}</th>
+                <td><img src={{item.image_link}} class="img-fluid img-thumbnail" alt={{item.name}}></td>
+                <td>{{item.description}}</td>
+                <td>{{item.restaurant_id.name}}</td>
+                <td>{{item.price}}</td>
+                {% if item.available %}
+                <td>Yes</td>
+                {% else %}
+                <td>No</td>
+                {% endif %}
+            </tr>
     {% endfor %}
-
+        </tbody>
+    </table>
     <hr>
-    Search Result: {{sr}}
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+
+    <h2>Matching Restaurants</h2>
+    {% for item in restaurants %}
+        <tr>
+            <td>{{item.name}}</th>
+            <td>{{item.address}}</td>
+            <td>{{item.phone}}</td>
+        </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+    <hr>
+    
+    {% endif %}
 </div>
 
 {% endblock %}
